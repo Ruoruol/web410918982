@@ -13,14 +13,35 @@
 <i>挖呀挖呀挖</i><br>
 <u>種大大的種子開大大的花</u>
 <p><a href="https://www.pu.edu.tw/">校網</a></p>
-<form>
-    帳號:<input type="text" name="account" value="" /><br />
-    密碼:<input type="password" name="password" value="" /><br />
-    年齡:<input type="text" name="age" value="" /><br />
-    性別:<input type="radio" name="gender" value="A" />男的
-        <input type="radio" name="gender" value="B" />女的<br />
-    興趣:<input type="checkbox" name="hobby1" value="1" />看書
-        <input type="checkbox" name="hobby2" value="2" />聽歌
-        <input type="checkbox" name="hobby3" value="3" />游泳
-        <input type="checkbox" name="hobby4" value="4" />打遊戲
-</form>
+@using (Html.BeginForm("Action", "Controller", FormMethod.Post))
+{
+    <div>
+        帳號:@Html.TextBox("account")<br />
+        密碼:@Html.Password("password")<br />
+        年齡:@Html.TextBox("age")<br />
+        性別:@Html.RadioButton("gender", "A")男的
+        @Html.RadioButton("gender", "B")女的<br />
+        興趣:@Html.CheckBox("hobby1")看書
+        @Html.CheckBox("hobby2")聽歌
+        @Html.CheckBox("hobby3")游泳
+        @Html.CheckBox("hobby4")打遊戲
+    </div>
+}
+
+@{
+    var name = "Ruoruo";
+    var message = "你好" + name;
+}
+<div>
+    @message,<br />
+    現在時刻:@DateTime.Now<br />
+</div>
+@{
+    var success = true;
+}
+@if (success == true)
+{
+    <p>是學生</p>
+}else{
+    <p>不是學生</p>
+}
